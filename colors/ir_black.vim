@@ -112,7 +112,7 @@ hi Keyword          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=bl
 hi PreProc          guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE
 hi Conditional      guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE        cterm=NONE  " if else end
 
-hi Todo             guifg=#8f8f8f     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
+hi Todo             guifg=yellow      guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        cterm=NONE
 hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
 
 hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
@@ -204,10 +204,25 @@ hi link javaScriptNumber      Number
 
 " Special for Python
 "hi  link pythonEscape         Keyword      
-
+hi link pythonOperator Keyword
 
 " Special for CSharp
-hi  link csXmlTag             Keyword      
+hi link csXmlTag             Keyword      
 
+" Markdown
+hi link markdownH1 String 
+hi link markdownH2 String 
+hi link markdownH3 String 
+hi link markdownH4 String 
+hi link markdownH5 String 
+hi link markdownH6 String 
+hi link markdownCode Function
+hi link markdownCodeBlock Function 
+hi link markdownCodeDelimiter Function 
+hi link markdownHeadingRule Delimiter
+hi markdownBold gui=bold
 
-" Special for PHP
+" syntastic
+hi SignColumn guibg=#121212
+hi SyntasticWarningSign guibg=#121212 guifg=#FF73FD
+hi SyntasticErrorSign guibg=#121212 guifg=#e13d42 gui=bold
