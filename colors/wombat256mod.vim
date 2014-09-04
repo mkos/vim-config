@@ -27,7 +27,7 @@ hi VisualNOS	ctermfg=251		ctermbg=236		cterm=none		guifg=#c3c6ca	guibg=#303030	g
 hi Search		ctermfg=177		ctermbg=241		cterm=none		guifg=#d787ff	guibg=#636066	gui=none
 hi Folded		ctermfg=103		ctermbg=237		cterm=none		guifg=#a0a8b0	guibg=#3a4046	gui=none
 hi Title		ctermfg=230						cterm=bold		guifg=#ffffd7					gui=bold
-hi StatusLine	ctermfg=230		ctermbg=238		cterm=none		guifg=#ffffd7	guibg=#444444	gui=italic
+hi StatusLine	ctermfg=230		ctermbg=238		cterm=none		guifg=#ffffd7	guibg=#444444	gui=none
 hi VertSplit	ctermfg=238		ctermbg=238		cterm=none		guifg=#444444	guibg=#444444	gui=none
 hi StatusLineNC	ctermfg=241		ctermbg=238		cterm=none		guifg=#857b6f	guibg=#444444	gui=none
 hi LineNr		ctermfg=241		ctermbg=232		cterm=none		guifg=#857b6f	guibg=#080808	gui=none
@@ -69,6 +69,8 @@ hi DiffChange					ctermbg=237										guibg=#382a37
 "hi TabLineSel
 "hi Tooltip
 "hi User1
+hi User1		ctermfg=111		ctermbg=238		cterm=none		guifg=#88b8f6	guibg=#444444
+hi User2		ctermfg=192		ctermbg=238		cterm=none		guifg=#e5786d	guibg=#444444
 "hi User9
 "hi WildMenu
 
