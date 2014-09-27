@@ -4,9 +4,17 @@
 version 7.0
 syntax on
 
-" pathogen
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mkos/vim-config'
+call vundle#end()
+filetype plugin indent on
 
 " {{{ general options
 set nocompatible
