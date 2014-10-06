@@ -3,8 +3,9 @@
 
 version 7.0
 syntax on
-
 set nocompatible
+
+" {{{ vundle config
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -15,6 +16,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mkos/vim-config'
 call vundle#end()
 filetype plugin indent on
+" }}}
 
 " {{{ general options
 set nocompatible
@@ -68,6 +70,7 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Consolas:h11:cEASTEUROPE
     endif
+    " }}}
     " {{{ statusline setup
 
     set stl=                                  " clear variable
@@ -99,7 +102,12 @@ nmap <silent> <leader>md :silent !$HOME/repos/scripts/mdnotes %<cr>
 nmap <silent> <leader>sl :so $HOME/.session.vim<cr>
 " close buffer
 nmap <silent> <leader>q :bd<cr>
+" tab/s-tab on block means indent/unindent block
+vmap <tab> >gv
+vmap <S-tab> <gv
+
 "}}}
+
 " {{{ file type specific autocommands
 
 " Sessions
@@ -125,7 +133,11 @@ autocmd BufRead,BufNewFile *.md set wrap
 " makefile
 autocmd BufRead,BufNewFile *.mk,Makefile set noexpandtab
 
+" vim
+autocmd BufRead,BufNewFile *.vim,.vimrc set fdm=marker 
+
 " }}}
+
 " {{{ plugin configuration
 
 " ctrl-p
@@ -145,6 +157,25 @@ au FileType c,java    set commentstring=//\ %s
 au FileType vim       set commentstring=\"\ %s
 
 " }}}
+
+" {{{ System(): set up system var for system specific config
+function! System()
+    if has("gui_running")
+        if has("gui_gtk2")
+            let g:system="linux"
+        elseif has("x11")
+            let g:system="x11"
+        elseif has("gui_win32")
+            let g:system="windows"
+        else
+            let g:system="unknown_cli"
+        endif
+    else
+        let g:system="console"
+    endif
+endf
+" }}}
+
 " {{{ Mode(): helper for the statusline
 
 function! Mode()
