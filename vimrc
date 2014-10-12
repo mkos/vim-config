@@ -14,6 +14,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mkos/vim-config'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype plugin indent on
 " }}}
