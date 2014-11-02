@@ -20,6 +20,9 @@ filetype plugin indent on
 " }}}
 
 " {{{ general options
+
+colorscheme ir_black
+
 set nocompatible
 set showmode    " show mode on the last line
 set ruler       " show statusline
@@ -36,6 +39,7 @@ set wildmenu    "show options in menu while completing
 set linebreak   "breaks at word boundaries rather than in a middle of a word
 set ignorecase
 set smartcase   "works with ignorecase and overrides it's value if the search pattern contains upper case letters
+set cursorline
 
 set tabstop     =4
 set shiftwidth  =4
@@ -47,50 +51,59 @@ set filetype    =unix
 set listchars   =tab:>-,trail:-,nbsp:%,eol:$    " for :set list
 set clipboard   =unnamedplus  " use unnamed buffer to copy & paste
 set ssop        =buffers,curdir,folds
+set guifont     =Source\ Code\ Pro\ Medium\ 13 " set guifont=Droid\ Sans\ Mono\ 12
+set guioptions -=T "no toolbar
+set guioptions -=r "no scrollbar
+set guioptions -=m "no menu
+
+"{{{ statusline setup
+
+set stl=                                  " clear variable
+set stl+=%02.2n\                          " buffer number
+if v:version >= 600
+    set stl+=%{strlen(&ft)?&ft:'none'}:   " filetype
+    set stl+=%{&encoding}:                " encoding
+endif
+set stl+=%{&fileformat}\                  " file format
+set stl+=%1*%F%*\                              " file name
+"set stl+=cwd:\ %1*%{getcwd()}%*                " current working dir
+set stl+=[%M%R]                           " flag
+set stl+=%=                                    " right align
+set stl+=[%2*%{Mode()}%*]                      " mode
+set stl+=%14.((%l,%c)%)\ %<%P " offset
 "}}}
 
-" {{{ gui/console specific options
-if has("gui_running")
-    """" gui specific options
+"}}}
 
-    colorscheme ir_black
+" {{{ system specific options
 
-    set guioptions -=T "no toolbar
-    set guioptions -=r "no scrollbar
-    set guioptions -=m "no menu
-    set cursorline
-    set lines=40 columns=110
-
-    " {{{ font configuration
-    if has("gui_gtk2")
-        " set guifont=Droid\ Sans\ Mono\ 12
-        set guifont=Source\ Code\ Pro\ Medium\ 13
-    elseif has("x11")
-        " Also for GTK 1
-        set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
-    elseif has("gui_win32")
-        set guifont=Consolas:h11:cEASTEUROPE
+" {{{ System(): set up system var for system specific config
+function! System()
+    if has("gui_running")
+        if has("gui_gtk2")
+            return "linux"
+        elseif has("x11")
+            return "x11"
+        elseif has("gui_win32")
+            return "windows"
+        else
+            return "unknown_cli"
+        endif
+    else
+        return "console"
     endif
-    " }}}
-    " {{{ statusline setup
+endf
+" }}}
 
-    set stl=                                  " clear variable
-    set stl+=%02.2n\                          " buffer number
-    if v:version >= 600
-        set stl+=%{strlen(&ft)?&ft:'none'}:   " filetype
-        set stl+=%{&encoding}:                " encoding
-    endif
-    set stl+=%{&fileformat}\                  " file format
-    set stl+=%1*%F%*\                              " file name
-    "set stl+=cwd:\ %1*%{getcwd()}%*                " current working dir
-    set stl+=[%M%R]                           " flag
-    set stl+=%=                                    " right align
-    set stl+=[%2*%{Mode()}%*]                      " mode
-    set stl+=%14.((%l,%c)%)\ %<%P " offset
-    " }}}
-else
-    """" console specific options
+if System() == "console"
     colorscheme default
+    set nocursorline
+    set stl=
+endif
+
+if System() == "windows"
+    set clipboard = unnamed
+    set guifont   = Consolas:h11:cEASTEUROPE
 endif
 " }}}
 
@@ -157,24 +170,6 @@ au FileType python,sh set commentstring=#\ %s
 au FileType c,java    set commentstring=//\ %s
 au FileType vim       set commentstring=\"\ %s
 
-" }}}
-
-" {{{ System(): set up system var for system specific config
-function! System()
-    if has("gui_running")
-        if has("gui_gtk2")
-            let g:system="linux"
-        elseif has("x11")
-            let g:system="x11"
-        elseif has("gui_win32")
-            let g:system="windows"
-        else
-            let g:system="unknown_cli"
-        endif
-    else
-        let g:system="console"
-    endif
-endf
 " }}}
 
 " {{{ Mode(): helper for the statusline
