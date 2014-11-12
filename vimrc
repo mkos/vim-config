@@ -103,8 +103,10 @@ if System() == "console"
 endif
 
 if System() == "windows"
-    set clipboard = unnamed
-    set guifont   = Consolas:h11:cEASTEUROPE
+    set clipboard =unnamed
+    "set guifont   =Consolas:h12:cEASTEUROPE
+    set guifont =Source\ Code\ Pro:h11:cEASTEUROPE
+    winsize 120 40
 endif
 " }}}
 
