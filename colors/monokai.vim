@@ -154,3 +154,13 @@ hi link rubyClassVariable       White
 hi link rubyControl             Green
 hi link rubyGlobalVariable      White
 hi link rubyInstanceVariable    White
+" Markdown
+hi link markdownListMarker      Blue
+hi link markdownH1              Red
+hi link markdownH2              Red
+hi link markdownH3              Red
+hi link markdownH4              Red
+hi link markdownH5              Red
+hi link markdownH6              Red
+hi link markdownCode            Yellow
+hi link markdownCodeBlock       Green
