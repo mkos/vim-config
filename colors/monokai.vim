@@ -164,3 +164,4 @@ hi link markdownH5              Red
 hi link markdownH6              Red
 hi link markdownCode            Yellow
 hi link markdownCodeBlock       Green
+hi markdownItalic               gui=italic
