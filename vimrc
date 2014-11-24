@@ -16,13 +16,14 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mkos/vim-config'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'bling/vim-airline'
 call vundle#end()
 filetype plugin indent on
 " }}}
 
 " {{{ general options
 
-colorscheme ir_black
+colorscheme monokai
 
 set nocompatible
 set showmode    " show mode on the last line
@@ -67,7 +68,7 @@ if v:version >= 600
 endif
 set stl+=%{&fileformat}\                  " file format
 set stl+=%1*%F%*\                              " file name
-"set stl+=cwd:\ %1*%{getcwd()}%*                " current working dir
+set stl+=cwd:\ %1*%{getcwd()}%*                " current working dir
 set stl+=[%M%R]                           " flag
 set stl+=%=                                    " right align
 set stl+=[%2*%{Mode()}%*]                      " mode
@@ -103,6 +104,7 @@ if System() == "console"
 endif
 
 if System() == "windows"
+    cd ~
     set clipboard =unnamed
     "set guifont   =Consolas:h12:cEASTEUROPE
     set guifont =Source\ Code\ Pro:h11:cEASTEUROPE
@@ -125,7 +127,7 @@ vmap <S-tab> <gv
 
 "}}}
 
-" {{{ file type specific autocommands
+" {{{ file type spcific autocommands
 
 " Sessions
 "autocmd VimEnter * silent so $HOME/.session.vim
