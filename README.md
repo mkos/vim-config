@@ -11,3 +11,8 @@ These are files found on the internet that I particularly like working with. I a
 * [ir_black](http://toddwerth.com/2008/04/30/the-last-vim-color-scheme-youll-ever-need/)
 * [monokai](http://www.vim.org/scripts/script.php?script_id=4667)
 * [wombat256mod](http://www.vim.org/scripts/script.php?script_id=2465)
+
+other
+-----
+
+* [scala.vim](https://github.com/derekwyatt/vim-scala/) syntax file shamelessly ripped off of [Derek Wyatt's](http://derekwyatt.org) config (btw, see his [blog post](http://derekwyatt.org/2013/12/31/coding-scala-with-vim.html) about scala & vim)

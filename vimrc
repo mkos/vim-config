@@ -145,6 +145,9 @@ autocmd BufRead,BufNewFile *.java set smartindent
 autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 autocmd BufRead *.java set makeprg=ant\ -find\ build.xml
 
+" Scala
+autocmd BufRead,BufNewFile *.scala set ft=scala
+
 " markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md set wrap
