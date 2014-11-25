@@ -58,23 +58,6 @@ set guioptions -=T "no toolbar
 set guioptions -=r "no scrollbar
 set guioptions -=m "no menu
 
-"{{{ statusline setup
-
-set stl=                                  " clear variable
-set stl+=%02.2n\                          " buffer number
-if v:version >= 600
-    set stl+=%{strlen(&ft)?&ft:'none'}:   " filetype
-    set stl+=%{&encoding}:                " encoding
-endif
-set stl+=%{&fileformat}\                  " file format
-set stl+=%1*%F%*\                              " file name
-set stl+=cwd:\ %1*%{getcwd()}%*                " current working dir
-set stl+=[%M%R]                           " flag
-set stl+=%=                                    " right align
-set stl+=[%2*%{Mode()}%*]                      " mode
-set stl+=%14.((%l,%c)%)\ %<%P " offset
-"}}}
-
 "}}}
 
 " {{{ system specific options
@@ -100,7 +83,6 @@ endf
 if System() == "console"
     colorscheme default
     set nocursorline
-    set stl=
 endif
 
 if System() == "windows"
@@ -180,38 +162,4 @@ au FileType c,java    set commentstring=//\ %s
 au FileType vim       set commentstring=\"\ %s
 
 " }}}
-
-" {{{ Mode(): helper for the statusline
-
-function! Mode()
-    if mode() == 'i'
-        return 'INSERT'
-    elseif mode() == 'n'
-        return 'NORMAL'
-    elseif mode() == 's' || mode() == 'S' || mode() == 'CTRL-S'
-        return 'SELECT'
-    elseif mode() == 'v' || mode() == 'V' || mode() == 'CTRL-V'
-        return 'VISUAL'
-    elseif mode() == 'R' || mode() == 'Rv'
-        return 'REPLCE'
-    elseif mode() == 'c'    " command line
-        return 'CMDLIN'
-    elseif mode() == 'r'    " hit enter prompt
-        return 'HENTER'
-    elseif mode() == 'rm'   " prompt to hit for more
-        return '-MORE-'
-    elseif mode() == 'r?'   " query requiring confirmation
-        return 'CONFRM'
-    elseif mode() == '!'    " shell execute
-        return 'SHELLX'
-    elseif mode() == 'no'   " operator pending
-        return 'OPPEND'
-    elseif mode() == 'cv' || mode() == 'ce'     " ex mode
-        return 'EXMODE'
-    else
-        return '!WTF?!'     " wtf?
-    endif
-endf
-" }}}
-
 "vim:fdm=marker
