@@ -105,6 +105,7 @@ endif
 
 if System() == "windows"
     cd ~
+    let g:netrw_scp_cmd = '"c:\Program Files (x86)\PuTTY\pscp.exe" -q'
     set clipboard =unnamed
     "set guifont   =Consolas:h12:cEASTEUROPE
     set guifont =Source\ Code\ Pro:h11:cEASTEUROPE
