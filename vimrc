@@ -161,5 +161,13 @@ au FileType python,sh set commentstring=#\ %s
 au FileType c,java    set commentstring=//\ %s
 au FileType vim       set commentstring=\"\ %s
 
+" NERDTree
+let NERDTreeMinimalUI = 1 " do not show help and bookmarks messages
+map <f2> :NERDTreeToggle<cr>
+" open nerdtree on start when no files were given as an argument
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" close vim if only nerd tree is open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " }}}
 "vim:fdm=marker
