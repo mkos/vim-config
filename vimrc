@@ -47,17 +47,13 @@ set cursorline
 set tabstop     =4
 set shiftwidth  =4
 set encoding    =utf-8
-set laststatus  =2 "always show statusline
-set backspace   =indent,eol,start "backspace props
-set shortmess  +=I "do not show welcome screen
-set filetype    =unix
+set laststatus  =2                              "always show statusline
+set backspace   =indent,eol,start               " backspace props
+set shortmess  +=I                              " do not show welcome screen
+set fileformat  =unix                           " set line ending to \n 
 set listchars   =tab:>-,trail:-,nbsp:%,eol:$    " for :set list
-set clipboard   =unnamedplus  " use unnamed buffer to copy & paste
+set clipboard   =unnamedplus                    " use unnamed buffer to copy & paste
 set ssop        =buffers,curdir,folds
-set guifont     =Source\ Code\ Pro\ Medium\ 13 " set guifont=Droid\ Sans\ Mono\ 12
-set guioptions -=T "no toolbar
-set guioptions -=r "no scrollbar
-set guioptions -=m "no menu
 
 "}}}
 
@@ -81,6 +77,13 @@ function! System()
 endf
 " }}}
 
+if System() == "linux"
+    set guifont     =Source\ Code\ Pro\ Medium\ 13 " set guifont=Droid\ Sans\ Mono\ 12
+    set guioptions -=T "no toolbar
+    set guioptions -=r "no scrollbar
+    set guioptions -=m "no menu
+endif
+
 if System() == "console"
     colorscheme default
     set nocursorline
@@ -93,6 +96,9 @@ if System() == "windows"
     "set guifont   =Consolas:h12:cEASTEUROPE
     set guifont =Source\ Code\ Pro:h11:cEASTEUROPE
     winsize 120 40
+    set guioptions -=T "no toolbar
+    set guioptions -=r "no scrollbar
+    set guioptions -=m "no menu
 endif
 " }}}
 
