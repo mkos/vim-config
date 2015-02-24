@@ -82,6 +82,7 @@ if System() == "linux"
     set guioptions -=T "no toolbar
     set guioptions -=r "no scrollbar
     set guioptions -=m "no menu
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 endif
 
 if System() == "console"
@@ -99,6 +100,7 @@ if System() == "windows"
     set guioptions -=T "no toolbar
     set guioptions -=r "no scrollbar
     set guioptions -=m "no menu
+    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
 endif
 " }}}
 
@@ -153,10 +155,11 @@ autocmd BufRead,BufNewFile *.vim,.vimrc set fdm=marker
 " {{{ plugin configuration
 
 " ctrl-p
-let g:ctrlp_cmd = 'CtrlPBuffer'     " <c-p> always start in buffer mode
-let g:ctrlp_by_filename = 0         " search by filename by default
-let g:ctrlp_show_hidden = 1         " show hidden files
-let g:ctrlp_open_new_file = 'r'     " open newly created file in the same window <c-y>
+let g:ctrlp_working_path_mode = 'ra'    " specifies ctrlP working dir: r - VCS mode, a - other dirs
+let g:ctrlp_cmd = 'CtrlPBuffer'         " <c-p> always start in buffer mode
+let g:ctrlp_by_filename = 0             " search by filename by default
+let g:ctrlp_show_hidden = 1             " show hidden files
+let g:ctrlp_open_new_file = 'r'         " open newly created file in the same window <c-y>
 let g:ctrlp_open_multiple_files = 'ij'  " open  multiple files with <c-o> in hidden buffers jumping to the first one
 let g:ctrlp_prompt_mappings = { 
     \ 'ToggleType(1)': ['<c-p>', '<c-up>'],
