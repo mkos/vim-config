@@ -18,6 +18,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
 call vundle#end()
 filetype plugin indent on
 " }}}
@@ -117,6 +118,7 @@ nmap <silent> <leader>q :bd<cr>
 vmap <tab> >gv
 vmap <S-tab> <gv
 " change working directory of current buffer to current file's dir
+" based on: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 nmap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
 "}}}
