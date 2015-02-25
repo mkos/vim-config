@@ -1,0 +1,9 @@
+Personal Help                                                       *personal*
+-------------
+
+1. Generating help tags
+
+        :helptags
+
+
+vim:tw=78:ts=8:ft=help:norl:
