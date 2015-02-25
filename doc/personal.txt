@@ -5,5 +5,7 @@ Personal Help                                                       *personal*
 
         :helptags
 
+|http://vim.wikia.com/wiki/Add_your_note_files_to_Vim_help|
+|http://vim.wikia.com/wiki/VimTip482|
 
 vim:tw=78:ts=8:ft=help:norl:
