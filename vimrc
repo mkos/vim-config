@@ -116,6 +116,8 @@ nmap <silent> <leader>q :bd<cr>
 " tab/s-tab on block means indent/unindent block
 vmap <tab> >gv
 vmap <S-tab> <gv
+" change working directory of current buffer to current file's dir
+nmap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
 "}}}
 
