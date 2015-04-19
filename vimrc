@@ -169,6 +169,12 @@ let g:ctrlp_prompt_mappings = {
     \ 'ToggleType(1)': ['<c-p>', '<c-up>'],
     \ 'PrtHistory(1)': ['<c-f>']
     \}                              " subsequent <c-p>s switch mode
+" taken from http://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders
+" to fix slowness of caching. Requires installed ag (a.k.a The Silver Searcher https://github.com/ggreer/the_silver_searcher)
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " commentary
 au FileType python,sh set commentstring=#\ %s
