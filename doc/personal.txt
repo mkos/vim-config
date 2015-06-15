@@ -3,7 +3,7 @@
 
 1. Generating help tags
 
-        :helptags
+    :helptags
 
 By default help files are read only. Add following options to last line:
 
@@ -15,7 +15,7 @@ to be able to edit help file
 |http://vim.wikia.com/wiki/Add_your_note_files_to_Vim_help|
 |http://vim.wikia.com/wiki/VimTip482|
 
-Varia                                                               varia
+Varia                                                               *varia*
 -----
 
 1. Adding special characters (unicode)
@@ -37,4 +37,307 @@ to enter special char, use combination of `CTRL-K` and set of two chars:
 
 command `:digraph` gives list of all two-char combinations
 
+word movement                                                   *pword*
+-------------
+
+    0 $     go to beginning/end of line
+    w e     go to beginning/end of word, identifier-wise, forward
+    W E     go to beginning/end of word, space-wise, forward
+    b ge    go to beginning/end of word, identifier-wise, backward
+    B gE    go to beginning/end of word, space-wise, backward
+    f F     forward/backward go to char, followed by a char, repeat with ;
+    t T     forward/backward till the char, followed by a char, repeat with ; (stops before char)
+
+More:
+
+    :help motion.txt
+    :help word
+    http://vimeo.com/6170479#at=0
+
+page movement                                                   *ppage*
+-------------
+
+    C-f C-b forward/backward one page
+    C-u C-d forward/backward half of page
+    H M L   go to beginning/middle/end of the *screen*
+    gg G    beginning/end of a file
+    300G    go to line 300
+    \* #    search forward/backward the word under the cursor. Go next one with n, N for previous (# for opposite direction
+    g\* g#
+    / ? search forward/backward
+
+More:
+
+    http://vimeo.com/6185584#
+
+jumping and marks                                               *pmarks*
+-----------------
+
+    ma      mark with *a*
+    'a      go to mark *a* line
+    `a      go to mark *a* line and column
+    :marks  shows marks
+    ''      jumps to previous position
+    ]]      jumps to opening bracket of a function forward
+    [[      jumps to opening bracket of a function backward
+    ][      jumps to closing bracket of a function forward
+    []      jumps to closing bracket of a function backward
+    %       jumps between matching brackets
+
+More
+
+    https://vimeo.com/6216655
+
+basic inserting/deleting/replacing
+----------------------------------
+
+    i   insert before cursor
+    I   insert before first non blank char in line
+    a   insert after
+    A   insert at the end of the line
+    o   new line below
+    O   new line above
+    x   delete char under the cursor
+    X   delete before cursor
+    dd  delete line
+    .   repeat last command
+    dw  delete word with space after
+    de  delete word only
+    cw  change word
+    C   change till the end of line
+    R   replace mode
+    r   single char replace
+
+    set cpoptions += $
+
+More
+
+https://vimeo.com/6329762
+
+basic cut/copy/paste
+--------------------
+
+    yy  yank line
+    yw  yank word
+    P   paste before cursor
+    p   paste after cursor
+    J   join two lines with space
+    gJ  join two lines without space
+    v   char-wise select
+    V   line-wise select
+    C-V block-wise select
+    gv  repeat last selection
+
+    set virtualedit = all
+
+    mark block, Shift-i, enter text and hit escape
+
+more:
+
+    https://vimeo.com/6332848
+
+working with buffers
+--------------------
+
+    :ls         list buffers    (help ls)
+    :ls!        list all buffers, also unlisted
+    :b <num>    go to buffer number <num>
+    :b <name>   go to buffer by name, tab completion works
+    :b#         switch to alternate buffer
+    :bd         delete current buffer
+    :bd <name>  delete buffer by name
+    :bd <num>   delete buffer by number <num>, allowed multiple numbers
+    :<range>bd  delete buffers by range, % means entire range
+    :args       wyświetla listę argumentów linii poleceń (pozwala też zmieniać i edytować) :help args
+    :n          next in the arglist
+    :wn         writes and moves to the next file in args list
+    :rewind     powrót do pierwszego elementu na argliście
+    :bufdo      repeat this through every buffer
+    :tabdo              -"-               tab
+    :windo              -"-               window
+
+more
+
+https://vimeo.com/6306508
+https://vimeo.com/6307101
+
+
+### working with windows ###
+[Derek Wyatt video](https://vimeo.com/6342264)
+
+    C-w o           make current window only one
+    :split <fname>  open new window with fname file in it
+    C-w x           zamienia dwa okna miejscami
+    C-w s           horizontal split
+    C-w v           vertical split
+    :vsp            vertical split
+    C-w k           przejdź do okna na górze
+    C-w j           przejdź do okna na dole
+    C-w h           przejdź do okna na lewo
+    C-w l           przejdź do okna na prawo
+    C-w K           przenieś okno na górę
+    C-w J           przenieś okno na dół
+    C-w H           przenieś okno na lewo
+    C-w L           przenieś okno na prawo
+    C-w c           zamknij okno
+    C-w p           poprzednie okno (tylko pomiędzy dwoma oknami)
+    C-w C-w         next window (circular)
+
+### working with help ###
+[Derek Wyatt video](http://vimeo.com/7035132)
+
+	:set wildmenu	dopełnianie linii poleceń
+	C-]				follow the link
+	C-T				back in the link history
+	:helpgrep		przeszukuje pomoc, poruszamy się pomiędzy rezultatami za pomocą :cn
+	:cwin			?
+	:cc				?
+
+### vimrc and runtime options ###
+[Derek Wyatt video](http://vimeo.com/7096383)
+
+    :h mapleader    przydatne do tworzenia nowych keybindings
+    :h runtimepath  ścieżki do plików konfiguracyjnych z opisem folderów
+    :helptags       generuje tagi pomocy z dokumentów nie będących w ścieżce vima (niestandardowych)
+
+### other ###
+    ==          indent line with context
+    gf          go to file under cursor
+    :bd, jf     (nie wiem co to jest, było przy helpie)
+    --remote-silent
+    0           begin macro (?)
+    S-Insert    paste from clipboard
+    zz          scroll to center current line vertically
+    zt          scroll current line vertically to the top
+
+### folding ###
+    foldmethod = marker - set this and use markers {{{ }}} in comments
+    zo          open fold
+    zc          close fold
+    zR          open all folds
+    zM          close all folds
+    zx
+    zv
+    zr
+
+### motions ###
+* [Ben Orenstein - Write code faster: expert-level vim](http://www.youtube.com/watch?v=SkdrYWhh-8s)
+
+    ct_         (_ to spacja) change till _ (excluding)
+    cf_         (_ to spacja) change find _ (including)
+    ci(         change inside () (działa w dowolnym miejscu nawiasu)
+    ca(         change inside () including parentheses
+    dap         delete around paragraph
+    d0          delete from the cursor to the beginning of line
+
+### repeaing && jumping ###
+
+    ;           powtórz ostatnie wyszukiwanie
+    ``          skocz do ostatniego miejsca edycji
+    .           powtórz ostatnią komendę
+    gv          powtórz ostatnie zaznaczenie
+
+### quickfix window
+
+    :.cc        skocz z okna quickfix do błędu
+
+### folding
+
+    zo          otwórz zwinięcie
+    zc          zamknij zwinięcie
+    zR          otwórz wszystkie zwinięcia
+    zM          zamknij wszystkie zwinięcia
+    zx          zamknij wszystkie zwinięcia oprócz aktualnego
+
+help topics
+-----------
+
+* `initialization` inicjalizacja
+* `vimruntime` inicjalizacja
+
+plugins
+-------
+
+### pathogen
+
+[GitHub: Pathogen](https://github.com/tpope/vim-pathogen)
+
+utworzony katalog 'bundle' w '.vim'. Dodane do '.vimrc':
+
+    runtime bundle/vim-pathogen/autoload/pathogen.vim
+    execute pathogen#infect()
+
+### surround
+* [Youtube: Surround](http://www.youtube.com/watch?v=5HF4jSyPpvs)
+* [GitHub: tpope/surround](https://github.com/tpope/vim-surround)
+
+    ysiw'   otocz słowo pojedyńczym cudzysłowem
+    cs'"    zastąp podwójnym cudzysłowem pojedyńczy 
+    S'      otocz zaznaczony (visual) blok pojedyńczym cudzysłowem
+    yss'    otocz aktualną linię pojedyńczym cudzysłowem
+
+### CtrlP
+* [GitHub: Ctrl-P](https://github.com/kien/ctrlp.vim)
+
+    C-k     pozycja wyżej na liście plików
+    C-j     pozycja niżej na liście plików
+
+### NERDTree
+
+* [GitHub: NERDTree](https://github.com/scrooloose/nerdtree)
+
+    I       show hidden files
+    A       zoom in/out (nerdtree zajmuje całą szerokość ekranu)
+
+### commentary
+* [GitHub: tpope/commentary](https://github.com/tpope/vim-commentary)
+* `gcc` komentuje\wykomentowuje aktualną linię
+* `gc` komentuje\wykomentowuje aktualnie podświetlony blok
+
+* konfiguracja `.vimrc`:
+    
+    autocmd FileType python set commentstring=#\ %s
+
+### static analysis
+
+* [Syntastic](https://github.com/scrooloose/syntastic)
+* używa zewnętrznych narzędzi do statycznej analizy kodu i oznacza linie w bocznej belce
+* `:Error` otwiera dolne okienko z listą błędów
+
+### markdown improvements
+
+:%!/path/to/markdown.pl --html4tags
+
+### Exuberrant CTAGS
+
+* [ctags](http://ctags.sourceforge.net/ctags.html) package
+* [Navigating source code | Dr. Dobbs](http://www.drdobbs.com/navigating-linux-source-code/184401358)
+
+### other plugins
+
+* [Youtube: tComment](http://www.youtube.com/watch?v=D8Vtuv_hAiA)
+* [tComment](http://www.vim.org/scripts/script.php?script_id=1173)
+* dictorg
+* [GitHub: SnipMate](https://github.com/msanders/snipmate.vim/)
+* [GitHub: tpope/fugitive (git plugin)](https://github.com/tpope/vim-fugitive)
+* [VimOrg: FuzzyFinder](http://www.vim.org/scripts/script.php?script_id=1984)
+* [TagList](http://vim-taglist.sourceforge.net/)
+* [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
+* [NERD Commenter](http://www.vim.org/scripts/script.php?script_id=1218)
+* [GitHub: tpope/unimpaired](https://github.com/tpope/vim-unimpaired)
+
+
+### links
+
+* [Gain Productivity by Having Different Vim Settings for Every Project](http://www.vimninjas.com/2012/08/30/local-vimrc/)
+* [How I boosted my Vim](http://nvie.com/posts/how-i-boosted-my-vim/)
+* [Entering special characters](http://vim.wikia.com/wiki/Entering_special_characters)
+* [How to save read only files in Vim](http://www.catonmat.net/blog/sudo-vim/)
+
+varia
+-----
+
+* wywołanie okienka wyboru czcionki: `set guifont=*`
+* rozwijanie nazw plików w linii poleceń: `help expand()`, np. plik z pełną ścieżką to `%:p`
+vim: ft=markdown
 vim:tw=78:ts=8:ft=help:norl:modifiable:noreadonly
