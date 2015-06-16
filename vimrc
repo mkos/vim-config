@@ -122,6 +122,8 @@ vmap <S-tab> <gv
 " change working directory of current buffer to current file's dir
 " based on: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 nmap <leader>cd :lcd %:p:h<cr>:pwd<cr>
+" remove search highlighting
+nmap <leader>n :noh<cr>
 
 "}}}
 
