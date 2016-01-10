@@ -21,6 +21,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'tomasr/molokai'
 Plugin 'sjl/badwolf'
+Plugin 'vim-voom/voom'
 call vundle#end()
 filetype plugin indent on
 " }}}
