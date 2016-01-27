@@ -22,6 +22,7 @@ Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'tomasr/molokai'
 Plugin 'sjl/badwolf'
 Plugin 'vim-voom/voom'
+Plugin 'townk/vim-autoclose'
 call vundle#end()
 filetype plugin indent on
 " }}}
@@ -125,6 +126,7 @@ vmap <S-tab> <gv
 nmap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 " remove search highlighting
 nmap <leader>n :noh<cr>
+nmap <silent> <leader>rc :source $MYVIMRC<cr>
 
 "}}}
 
