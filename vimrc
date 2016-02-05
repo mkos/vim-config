@@ -161,6 +161,9 @@ autocmd BufRead,BufNewFile *.mk,Makefile set noexpandtab
 " vim
 autocmd BufRead,BufNewFile *.vim,.vimrc set fdm=marker 
 
+" voom
+autocmd FileType voomtree set foldlevel=5
+
 " }}}
 
 " {{{ plugin configuration
@@ -194,5 +197,10 @@ let NERDTreeRespectWildIgnore = 1 " use wildignore setting to filter out files
 map <f2> :NERDTreeToggle<cr>
 " close vim if only nerd tree is open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Voom
+let g:voom_ft_modes={'markdown': 'markdown'}
+let g:voom_default_mode='markdown'
+
 " }}}
 "vim:fdm=marker
