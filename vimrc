@@ -12,13 +12,17 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 Plugin 'mkos/vim-config'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'tomasr/molokai'
+Plugin 'sjl/badwolf'
+Plugin 'vim-voom/voom'
+Plugin 'townk/vim-autoclose'
 call vundle#end()
 filetype plugin indent on
 " }}}
@@ -121,7 +125,8 @@ vmap <S-tab> <gv
 " based on: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 nmap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 nmap <silent> <leader>rc :source $MYVIMRC<cr>:echo 'Config reloaded!'<cr>
-
+" remove search highlighting
+nmap <leader>n :noh<cr>
 "}}}
 
 " {{{ file type spcific autocommands
@@ -155,6 +160,9 @@ autocmd BufRead,BufNewFile *.mk,Makefile set noexpandtab
 " vim
 autocmd BufRead,BufNewFile *.vim,.vimrc set fdm=marker 
 
+" voom
+autocmd FileType voomtree set foldlevel=5
+
 " }}}
 
 " {{{ plugin configuration
@@ -170,6 +178,12 @@ let g:ctrlp_prompt_mappings = {
     \ 'ToggleType(1)': ['<c-p>', '<c-up>'],
     \ 'PrtHistory(1)': ['<c-f>']
     \}                              " subsequent <c-p>s switch mode
+" taken from http://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders
+" to fix slowness of caching. Requires installed ag (a.k.a The Silver Searcher https://github.com/ggreer/the_silver_searcher)
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " commentary
 au FileType python,sh set commentstring=#\ %s
@@ -182,5 +196,10 @@ let NERDTreeRespectWildIgnore = 1 " use wildignore setting to filter out files
 map <f2> :NERDTreeToggle<cr>
 " close vim if only nerd tree is open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Voom
+let g:voom_ft_modes={'markdown': 'markdown'}
+let g:voom_default_mode='markdown'
+
 " }}}
 "vim:fdm=marker
