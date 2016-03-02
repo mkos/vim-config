@@ -120,6 +120,7 @@ vmap <S-tab> <gv
 " change working directory of current buffer to current file's dir
 " based on: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 nmap <leader>cd :lcd %:p:h<cr>:pwd<cr>
+nmap <silent> <leader>rc :source $MYVIMRC<cr>:echo 'Config reloaded!'<cr>
 
 "}}}
 
