@@ -1,9 +1,16 @@
-Personal Help                                                       *personal*
+﻿Personal Help                                                       *personal*
 -------------
 
 1. Generating help tags
 
         :helptags
+
+By default help files are read only. Add following options to last line:
+
+    modifiable
+    noreadonly
+
+to be able to edit help file
 
 |http://vim.wikia.com/wiki/Add_your_note_files_to_Vim_help|
 |http://vim.wikia.com/wiki/VimTip482|
@@ -17,9 +24,17 @@ http://vim.wikia.com/wiki/Entering_special_characters
 
 to enter special char, use combination of `CTRL-K` and set of two chars:
 
-        CTRL-K a:            gives              ä
-        CTRL-K e>            gives              ê
+        <-      ←               uT      △
+        00      ∞               +Z      ∑
+        ?2      ≈               *P      ∏
+        !=      ≠               *p      π
+        =<      ≤               /\      ×
+        >=      ≥               In      ∫
+        RT      √               dP      ∂
+        Om      Ω               ss      ß
+        *X      ×               +-      ±
+        Pd      £
 
 command `:digraph` gives list of all two-char combinations
 
-vim:tw=78:ts=8:ft=help:norl:
+vim:tw=78:ts=8:ft=help:norl:modifiable:noreadonly
