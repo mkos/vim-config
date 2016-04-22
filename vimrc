@@ -73,6 +73,8 @@ function! System()
             return "x11"
         elseif has("gui_win32")
             return "windows"
+        elseif has("mac")
+            return "osx"
         else
             return "unknown_cli"
         endif
@@ -101,12 +103,24 @@ if System() == "windows"
     set clipboard =unnamed
     "set guifont   =Consolas:h12:cEASTEUROPE
     set guifont =Source\ Code\ Pro:h11:cEASTEUROPE
-    winsize 120 40
     set guioptions -=T "no toolbar
     set guioptions -=r "no scrollbar
     set guioptions -=m "no menu
     set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
+    winsize 120 40
 endif
+
+if System() == "osx"
+    set guifont =Menlo\ Regular:h12
+    set clipboard =unnamed
+    set guioptions -=T "no toolbar
+    set guioptions -=r "no scrollbar
+    set guioptions -=m "no menu
+    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
+    set transparency=12
+    winsize 150 50
+endif
+
 " }}}
 
 " {{{ key bindings
